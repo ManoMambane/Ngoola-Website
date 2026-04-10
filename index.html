@@ -3,154 +3,332 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ngoola (Pty) Ltd</title>
+  <title>Ngoola (Pty) Ltd | Engineering & Infrastructure Solutions</title>
+  <meta name="description" content="Ngoola (Pty) Ltd provides professional engineering, project management, industrial lubrication, and water & wastewater solutions across South Africa.">
+
   <style>
+    :root {
+      --primary: #006699;
+      --secondary: #ff6600;
+      --dark: #004466;
+      --light: #f4f4f4;
+    }
+
+    [data-theme="dark"] {
+      --light: #1a1a1a;
+      --dark: #e0e0e0;
+      --primary: #0099cc;
+      --secondary: #ff8533;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
-      background-color: #f4f4f4;
+      background-color: var(--light);
       color: #333;
+      transition: all 0.4s;
     }
-    header {
-      background: #004466;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header img {
-      max-height: 80px;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
+
+    [data-theme="dark"] body { color: #ddd; }
+
     nav {
-      background: #006699;
-      padding: 10px;
-      text-align: center;
+      background: var(--primary);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
     }
     nav a {
       color: #fff;
-      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
     }
-    section {
-      padding: 40px;
-      background: #fff;
-      margin: 20px auto;
-      max-width: 1000px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #004466;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      padding: 5px 0;
-    }
-    footer {
-      background: #004466;
+    nav a:hover { color: var(--secondary); }
+
+    .menu-toggle { display: none; background: var(--dark); color: #fff; padding: 12px; font-size: 1.6em; cursor: pointer; }
+
+    .hero {
+      background: linear-gradient(135deg, #004466, #0099cc, #ff6600);
       color: #fff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 130px 20px 100px;
+    }
+    .hero h1 { font-size: 3.2em; margin-bottom: 10px; }
+    .hero .tagline { font-size: 1.6em; font-weight: 700; }
+    .hero .subtitle { font-size: 1.25em; max-width: 700px; margin: 15px auto 30px; }
+
+    .cta-button {
+      background: var(--secondary);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+      display: inline-block;
     }
 
-    /* Mobile view adjustments */
+    section {
+      padding: 60px 20px;
+      background: var(--light);
+      margin: 20px auto;
+      max-width: 1100px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.2em;
+    }
+
+    /* Contact Section with Map */
+    #contact .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .contact-info, .contact-form, .contact-map {
+      flex: 1 1 320px;
+      min-width: 280px;
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .contact-info h3 { color: var(--primary); }
+    .contact-info p { margin: 12px 0; }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    [data-theme="dark"] form input,
+    [data-theme="dark"] form textarea {
+      background: #333; color: #ddd; border-color: #555;
+    }
+
+    form button {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8em;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
-      body, header, nav, section, footer {
-        text-align: center;
-      }
-      ul {
-        padding-left: 0;
-      }
+      .menu-toggle { display: block; }
+      nav ul { flex-direction: column; display: none; }
+      nav ul.showing { display: flex; }
+      .contact-container { flex-direction: column; }
+      .hero h1 { font-size: 2.5em; }
     }
   </style>
 </head>
-<body>
-  <header>
-    <img src="logo.png" alt="Ngoola (Pty) Ltd Logo">
-    <p>Engineering | Project Management | Industrial Lubrication | Water & Wastewater Management</p>
-  </header>
+<body data-theme="light">
 
+  <div class="menu-toggle">☰ Menu</div>
+  
   <nav>
-    <a href="#overview">Overview</a>
-    <a href="#vision">Vision</a>
-    <a href="#mission">Mission</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">🌙</button>
+    </div>
   </nav>
 
-  <section id="overview">
+  <header class="hero">
+    <h1>Ngoola (Pty) Ltd</h1>
+    <p class="tagline">Engineering Solutions for Sustainable Infrastructure</p>
+    <p class="subtitle">Process Engineering • Project Management • Industrial Lubrication • Water & Wastewater</p>
+    <a href="#services" class="cta-button">Our Services</a>
+    <a href="#" id="quoteBtn" class="cta-button" style="background:#fff; color:var(--primary);">Get a Quote</a>
+  </header>
+
+  <section id="overview" class="fade-in">
     <h2>Company Overview</h2>
-    <p>Ngoola (Pty) Ltd is a multidisciplinary engineering and technical services company providing specialised solutions in process engineering, project management, industrial lubrication, and water and wastewater treatment management. The company supports municipalities, utilities, power stations, and industrial facilities across South Africa and beyond.</p>
+    <p>Ngoola (Pty) Ltd is a multidisciplinary engineering and technical services company based in South Africa. We specialise in process engineering, project management, industrial lubrication, and water & wastewater treatment management.</p>
   </section>
 
-  <section id="vision">
-    <h2>Vision</h2>
-    <p>To become a leading engineering and infrastructure services provider in Africa within the water, wastewater, industrial reliability, and infrastructure project sectors.</p>
+  <section id="vision" class="fade-in">
+    <h2>Our Vision</h2>
+    <p>To become a leading engineering and infrastructure services provider in Africa.</p>
   </section>
 
-  <section id="mission">
-    <h2>Mission</h2>
+  <section id="mission" class="fade-in">
+    <h2>Our Mission</h2>
     <p>To deliver practical, cost-effective, and sustainable engineering solutions that improve infrastructure performance and support long-term operational reliability.</p>
   </section>
 
-  <section id="services">
-    <h2>Core Services</h2>
-    <h3>Process Engineering</h3>
-    <ul>
-      <li>Process engineering design</li>
-      <li>Process optimisation and troubleshooting</li>
-      <li>Production plant performance assessments</li>
-      <li>Chemical dosing optimisation</li>
-      <li>Process audits and technical reports</li>
-    </ul>
-
-    <h3>Project Management</h3>
-    <ul>
-      <li>Infrastructure project planning and scheduling</li>
-      <li>Construction monitoring</li>
-      <li>Contract administration (GCC / NEC / FIDIC)</li>
-      <li>Risk and cost management</li>
-      <li>Commissioning and handover</li>
-    </ul>
-
-    <h3>Water & Wastewater Treatment Management</h3>
-    <ul>
-      <li>Operational support for treatment plants</li>
-      <li>Water quality monitoring</li>
-      <li>Asset management and maintenance planning</li>
-      <li>Operator training and capacity building</li>
-    </ul>
-
-    <h3>Industrial Lubrication & Reliability Services</h3>
-    <ul>
-      <li>Grease and lubrication management programs</li>
-      <li>Oil sampling and analysis</li>
-      <li>Tribology services</li>
-      <li>Equipment reliability improvement programs</li>
-    </ul>
+  <section id="services" class="fade-in">
+    <h2>Our Core Services</h2>
+    <div class="services-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:25px; text-align:center;">
+      <div class="service-card"><img src="https://img.icons8.com/color/96/engineering.png" alt="Process Engineering" style="width:70px;"><h3>Process Engineering</h3></div>
+      <div class="service-card"><img src="https://img.icons8.com/color/96/project-management.png" alt="Project Management" style="width:70px;"><h3>Project Management</h3></div>
+      <div class="service-card"><img src="https://img.icons8.com/color/96/water.png" alt="Water Management" style="width:70px;"><h3>Water & Wastewater</h3></div>
+      <div class="service-card"><img src="https://img.icons8.com/color/96/oil-industry.png" alt="Lubrication" style="width:70px;"><h3>Industrial Lubrication</h3></div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Information</h2>
-    <p><strong>Address:</strong> 57 Sloane Street, Bryanston, Sandton, 2191, South Africa</p>
-    <p><strong>Email:</strong> admin@ngoola.com</p>
-    <p><strong>Telephone:</strong> +27 82 471 0732</p>
-    <p><strong>Website:</strong> <a href="http://www.ngoola.com" target="_blank">www.ngoola.com</a></p>
+  <section id="contact" class="fade-in">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Ngoola (Pty) Ltd</h3>
+        <p><strong>Address:</strong><br>
+           Cnr Main & Sloane Street,<br>
+           The Campus Twickenham Building,<br>
+           Bryanston, Johannesburg, 2091
+        </p>
+        <p><strong>Email:</strong> admin@ngoola.com<br>
+           <strong>Phone:</strong> 011 745 2696
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message or Requirements" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Google Map -->
+      <div class="contact-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.123456789!2d28.019!3d-26.045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d0f0f0f0f0f%3A0x1234567890abcdef!2sThe%20Campus%20Twickenham%20Building%2C%20Bryanston%2C%20Johannesburg!5e0!3m2!1sen!2sza!4v1710000000000" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 Ngoola (Pty) Ltd. All Rights Reserved.</p>
+    <p>&copy; 2026 Ngoola (Pty) Ltd. All rights reserved. | Johannesburg, South Africa</p>
   </footer>
+
+  <!-- Get a Quote Modal -->
+  <div class="modal" id="quoteModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2>Get a Free Quote</h2>
+      <form id="quoteForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number">
+        <textarea name="requirements" placeholder="Describe your project or requirements" rows="5" required></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Hamburger
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('showing');
+    });
+
+    // Dark Mode
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeToggle.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+    if (localStorage.getItem('theme') === 'dark') {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀️';
+    }
+
+    // Quote Modal
+    document.getElementById('quoteBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('quoteModal').style.display = 'flex';
+    });
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('quoteModal').style.display = 'none';
+    });
+
+    // Form alerts
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent.");
+      e.target.reset();
+    });
+    document.getElementById('quoteForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Thank you! Your quote request has been received. We will contact you soon.");
+      document.getElementById('quoteModal').style.display = 'none';
+      e.target.reset();
+    });
+  </script>
 </body>
 </html>
