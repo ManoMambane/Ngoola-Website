@@ -1,0 +1,627 @@
+/* ============================================
+   Ngoola (Pty) Ltd | Engineering & Infrastructure Solutions
+   Core Stylesheet
+   Author: Antswisa Solutions
+   Description: Clean, responsive, and modern styling for corporate engineering website
+   ============================================ */
+
+/* ---------- CSS Variables (Design Tokens) ---------- */
+:root {
+    /* Primary Brand Colors */
+    --primary: #006699;      /* Deep blue - main brand */
+    --secondary: #ff6600;    /* Orange - accent & CTA */
+    --dark: #004466;         /* Darker blue for depth */
+    --light: #f4f4f4;        /* Light gray background */
+    
+    /* Neutral Colors */
+    --white: #ffffff;
+    --black: #333333;
+    --gray-light: #f9f9f9;
+    --gray-border: #ddd;
+    
+    /* Shadows & Effects */
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+    --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 25px rgba(0,0,0,0.15);
+    --shadow-hover: 0 8px 20px rgba(0,0,0,0.2);
+    
+    /* Typography */
+    --font-primary: 'Open Sans', Arial, sans-serif;
+    
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    --transition-smooth: all 0.3s ease;
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 10px;
+    --radius-xl: 12px;
+}
+
+/* ---------- Reset & Base Styles ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: var(--light);
+    color: var(--black);
+}
+
+/* ---------- Navigation Bar ---------- */
+nav {
+    background: var(--primary);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-logo img {
+    height: 50px;
+    width: auto;
+    transition: transform var(--transition-fast);
+}
+
+.nav-logo img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: var(--dark);
+    color: var(--white);
+    padding: 12px;
+    font-size: 1.6em;
+    cursor: pointer;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    transition: background var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    background: var(--primary);
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+    background: linear-gradient(135deg, #004466, #0099cc, #ff6600);
+    color: var(--white);
+    text-align: center;
+    padding: 100px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3em;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+/* ---------- Partner Logos - Scrolling Marquee ---------- */
+.hero-partners {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+    width: 100%;
+}
+
+.hero-partners p {
+    font-size: 0.85em;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.partner-logos {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    animation: scrollLogos 25s linear infinite;
+    width: fit-content;
+}
+
+.partner-logos:hover {
+    animation-play-state: paused;
+}
+
+.partner-logos img {
+    height: 50px;
+    width: auto;
+    background: var(--white);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+    object-fit: contain;
+}
+
+.partner-logos img:hover {
+    transform: scale(1.08);
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ---------- Section Container ---------- */
+.section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 40px 30px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    scroll-margin-top: 80px;
+}
+
+.section h2 {
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+/* ---------- Overview Section (Two Column) ---------- */
+.overview {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.overview-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: var(--radius-lg);
+    transition: transform var(--transition-fast);
+}
+
+.overview-image img:hover {
+    transform: scale(1.02);
+}
+
+.overview-text {
+    flex: 1;
+}
+
+.overview-text h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.overview-text p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.02em;
+}
+
+/* ---------- Services Grid (Hover Overlay Cards) ---------- */
+.services-grid {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 25px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    flex: 1;
+    min-width: 220px;
+    max-width: 260px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform var(--transition-fast);
+}
+
+.service-card:hover .service-icon img {
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    margin: 12px 0 8px;
+    color: var(--dark);
+    font-size: 1.1em;
+}
+
+/* Service Overlay (Appears on Hover) */
+.service-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,102,153,0.96), rgba(255,102,0,0.94));
+    color: var(--white);
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: bottom 0.3s ease;
+    font-size: 0.85em;
+    border-radius: var(--radius-lg);
+}
+
+.service-overlay ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.service-overlay li {
+    margin: 8px 0;
+    font-size: 0.8em;
+    padding-left: 20px;
+    position: relative;
+}
+
+.service-overlay li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.service-card:hover .service-overlay {
+    bottom: 0;
+}
+
+/* ---------- Contact Section (3 Column Layout) ---------- */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.contact-info,
+.contact-form,
+.contact-map {
+    flex: 1;
+    min-width: 280px;
+}
+
+.contact-info h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.contact-info p {
+    margin: 12px 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: var(--radius-md);
+}
+
+/* Form Styling */
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95em;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,102,153,0.1);
+}
+
+form button {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+    font-size: 1em;
+    width: 100%;
+    font-weight: 600;
+}
+
+form button:hover {
+    background: var(--dark);
+    transform: translateY(-2px);
+}
+
+form button:active {
+    transform: translateY(0);
+}
+
+/* Success/Error Message Styling */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+    font-size: 0.9em;
+    border-left: 4px solid #28a745;
+}
+
+.success-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border-left-color: #dc3545;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+footer a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* ---------- Responsive Design (Mobile & Tablet) ---------- */
+/* Tablet Landscape & Small Desktops */
+@media (max-width: 1100px) {
+    .service-card {
+        min-width: 200px;
+        max-width: 230px;
+    }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+    /* Mobile Menu */
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        padding: 20px;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        gap: 15px;
+        box-shadow: var(--shadow-md);
+        z-index: 999;
+    }
+    
+    nav ul.showing {
+        display: flex;
+    }
+    
+    nav ul li {
+        text-align: center;
+    }
+    
+    nav a {
+        display: block;
+        padding: 10px;
+    }
+    
+    /* Hero adjustments */
+    .hero-title {
+        font-size: 2.2em;
+    }
+    
+    .hero {
+        padding: 60px 20px 50px;
+    }
+    
+    .tagline {
+        font-size: 1.2em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    /* Section adjustments */
+    .section {
+        padding: 30px 20px;
+        margin: 20px 15px;
+    }
+    
+    .section h2 {
+        font-size: 1.6em;
+    }
+    
+    /* Overview becomes column */
+    .overview {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+    
+    .overview-image img {
+        max-width: 250px;
+    }
+    
+    /* Services - full width cards */
+    .service-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Partner logos smaller */
+    .partner-logos img {
+        height: 35px;
+        padding: 5px 10px;
+    }
+    
+    .partner-logos {
+        gap: 15px;
+    }
+    
+    /* Contact section stacking */
+    .contact-container {
+        flex-direction: column;
+    }
+}
+
+/* Mobile Small Screens */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8em;
+    }
+    
+    .section {
+        padding: 20px 15px;
+    }
+    
+    .service-icon img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .partner-logos img {
+        height: 30px;
+        padding: 4px 8px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    nav,
+    .menu-toggle,
+    .hero-partners,
+    .contact-map iframe,
+    form button {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .section {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+    }
+}

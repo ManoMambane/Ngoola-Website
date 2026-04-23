@@ -2,403 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ngoola (Pty) Ltd | Engineering & Infrastructure Solutions</title>
   <meta name="description" content="Ngoola (Pty) Ltd provides professional engineering, project management, industrial lubrication, and water & wastewater solutions across South Africa.">
-
-  <!-- Favicon - Logo in Browser Tab -->
+  <!-- Favicon - Logo in Browser Tab (ensure img/logo.png exists) -->
   <link rel="icon" type="image/png" href="img/logo.png">
   <link rel="shortcut icon" type="image/png" href="img/logo.png">
   <link rel="apple-touch-icon" href="img/logo.png">
-  
-  <style>
-    :root {
-      --primary: #006699;
-      --secondary: #ff6600;
-      --dark: #004466;
-      --light: #f4f4f4;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Open Sans', Arial, sans-serif;
-      line-height: 1.6;
-      background-color: var(--light);
-      color: #333;
-    }
-
-    /* Navbar */
-    nav {
-      background: var(--primary);
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    nav .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-    .nav-logo img {
-      height: 50px;
-      width: auto;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: var(--secondary); }
-
-    .menu-toggle {
-      display: none;
-      background: var(--dark);
-      color: #fff;
-      padding: 12px;
-      font-size: 1.6em;
-      cursor: pointer;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, #004466, #0099cc, #ff6600);
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px 80px;
-      position: relative;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero-title { font-size: 3em; margin-bottom: 12px; }
-    .tagline { font-size: 1.5em; font-weight: 700; margin-bottom: 10px; }
-    .subtitle { font-size: 1.2em; margin-bottom: 35px; }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .cta-button {
-      padding: 12px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      transition: all 0.3s ease;
-    }
-
-    .cta-button.primary { background: var(--secondary); color: #fff; }
-    .cta-button.primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    /* Partner Logos - Scrolling */
-    .hero-partners {
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      overflow: hidden;
-    }
-    
-    .hero-partners p {
-      font-size: 0.85em;
-      opacity: 0.8;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-    
-    .partner-logos {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      animation: scroll 25s linear infinite;
-      width: fit-content;
-    }
-    
-    .partner-logos:hover {
-      animation-play-state: paused;
-    }
-    
-    .partner-logos img {
-      height: 50px;
-      width: auto;
-      background: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-    
-    .partner-logos img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Sections */
-    .section {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 40px 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    .section h2 {
-      color: var(--dark);
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-    }
-
-    /* Overview - Centered Text */
-    .overview {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .overview-image img {
-      width: 100%;
-      max-width: 350px;
-      border-radius: 10px;
-    }
-
-    .overview-text {
-      flex: 1;
-    }
-
-    .overview-text h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .overview-text p {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    /* Services - Single Row No Scroll */
-    .services-grid {
-      display: flex;
-      gap: 25px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .service-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 25px 20px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      flex: 1;
-      min-width: 220px;
-      max-width: 260px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .service-icon img {
-      width: 60px;
-      height: 60px;
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover .service-icon img {
-      transform: scale(1.1);
-    }
-
-    .service-card h3 {
-      margin: 12px 0 8px;
-      color: var(--dark);
-      font-size: 1.1em;
-    }
-
-    .service-overlay {
-      position: absolute;
-      bottom: -100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0,102,153,0.95), rgba(255,102,0,0.92));
-      color: white;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transition: bottom 0.3s ease;
-      font-size: 0.85em;
-    }
-
-    .service-overlay ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .service-overlay li {
-      margin: 6px 0;
-      font-size: 0.8em;
-    }
-
-    .service-card:hover .service-overlay {
-      bottom: 0;
-    }
-
-    /* Contact */
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    .contact-info, .contact-form, .contact-map { 
-      flex: 1;
-      min-width: 280px; 
-    }
-
-    .contact-info h3 {
-      color: var(--dark);
-      margin-bottom: 15px;
-    }
-
-    .contact-info p {
-      margin: 8px 0;
-      font-size: 0.95em;
-    }
-
-    .contact-map iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
-      border-radius: 8px;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.95em;
-    }
-
-    form button {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 0.95em;
-      width: 100%;
-    }
-
-    form button:hover {
-      background: var(--dark);
-    }
-
-    /* Success message styling */
-    .success-message {
-      background: #d4edda;
-      color: #155724;
-      padding: 12px;
-      border-radius: 6px;
-      margin-top: 10px;
-      text-align: center;
-      display: none;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-      font-size: 0.9em;
-    }
-
-    footer a {
-      color: var(--secondary);
-      text-decoration: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      nav ul { 
-        display: none;
-        flex-direction: column;
-        background: var(--primary);
-        padding: 20px;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-      }
-      nav ul.showing { display: flex; }
-      .overview { flex-direction: column; text-align: center; gap: 25px; }
-      .hero-title { font-size: 2.2em; }
-      .hero { padding: 80px 20px 60px; }
-      .section { padding: 30px 20px; }
-      .service-card { min-width: 100%; max-width: 100%; }
-      .partner-logos img { height: 35px; padding: 5px 10px; }
-    }
-
-    @media (min-width: 769px) and (max-width: 1100px) {
-      .service-card { min-width: 200px; }
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
+  <!-- Mobile Menu Toggle Button (visible on small screens) -->
+  <div class="menu-toggle" aria-label="Menu" role="button" tabindex="0">☰ Menu</div>
 
-  <div class="menu-toggle">☰ Menu</div>
-  
+  <!-- Main Navigation Bar -->
   <nav>
     <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <img src="img/logo.png" alt="Ngoola (Pty) Ltd">
+      <a href="#" class="nav-logo" aria-label="Home">
+        <img src="img/logo.png" alt="Ngoola (Pty) Ltd - Company Logo">
       </a>
-      <ul>
+      <ul id="nav-menu">
         <li><a href="#overview">Home</a></li>
         <li><a href="#vision">Vision</a></li>
         <li><a href="#mission">Mission</a></li>
@@ -408,17 +31,17 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section with animated partner logos -->
   <header class="hero">
     <div class="hero-content">
       <h1 class="hero-title">Ngoola (Pty) Ltd</h1>
       <p class="tagline">Engineering Solutions for Sustainable Infrastructure</p>
       <p class="subtitle">Process Engineering • Project Management • Industrial Lubrication • Water & Wastewater</p>
-     
-      
+      <!-- Trusted Partners Scrolling Logos -->
       <div class="hero-partners">
         <p>Our Trusted Partners</p>
-        <div class="partner-logos">
+        <div class="partner-logos" aria-label="Scrolling partner logos">
+          <!-- Duplicated set for seamless infinite scroll effect -->
           <img src="img/logo/cityoftshwane.png" alt="City of Tshwane">
           <img src="img/logo/dws.png" alt="DWS">
           <img src="img/logo/erwat.png" alt="ERWAT">
@@ -427,6 +50,7 @@
           <img src="img/logo/mbombela.png" alt="Mbombela">
           <img src="img/logo/randwater.png" alt="Rand Water">
           <img src="img/logo/vaalcentralwater.png" alt="Vaal Central Water">
+          <!-- Duplicate for smooth loop -->
           <img src="img/logo/cityoftshwane.png" alt="City of Tshwane">
           <img src="img/logo/dws.png" alt="DWS">
           <img src="img/logo/erwat.png" alt="ERWAT">
@@ -440,11 +64,11 @@
     </div>
   </header>
 
-  <!-- Overview -->
+  <!-- Company Overview Section -->
   <section id="overview" class="section">
     <div class="overview">
       <div class="overview-image">
-        <img src="img/logo.png" alt="Ngoola (Pty) Ltd">
+        <img src="img/logo.png" alt="Ngoola (Pty) Ltd - Company Brand">
       </div>
       <div class="overview-text">
         <h2>Company Overview</h2>
@@ -454,7 +78,7 @@
     </div>
   </section>
 
-  <!-- Vision -->
+  <!-- Vision Section -->
   <section id="vision" class="section">
     <h2>Our Vision</h2>
     <p style="font-size: 1.1em; text-align: center; max-width: 700px; margin: 0 auto;">
@@ -462,7 +86,7 @@
     </p>
   </section>
 
-  <!-- Mission -->
+  <!-- Mission Section -->
   <section id="mission" class="section">
     <h2>Our Mission</h2>
     <p style="font-size: 1.1em; text-align: center; max-width: 700px; margin: 0 auto; line-height: 1.6;">
@@ -470,69 +94,68 @@
     </p>
   </section>
 
-  <!-- Services -->
+  <!-- Core Services Section with hover overlays -->
   <section id="services" class="section">
     <h2>Our Core Services</h2>
     <div class="services-grid">
+      <!-- Service Card 1 -->
       <div class="service-card">
-        <div class="service-icon"><img src="https://img.icons8.com/color/96/engineering.png" alt="Process Engineering"></div>
+        <div class="service-icon"><img src="img/process2.jpg" alt="Process Engineering icon"></div>
         <h3>Process Engineering</h3>
         <div class="service-overlay">
           <ul>
             <li>Process Engineering Design</li>
-            <li>Process Optimisation</li>
-            <li>Plant Performance Assessments</li>
+            <li>Process Optimisation & Troubleshooting</li>
+            <li>Production Plant Performance Assessments</li>
             <li>Chemical Dosing Optimisation</li>
-            <li>Process Audits & Reports</li>
+            <li>Process Audits & Technical Reports</li>
           </ul>
         </div>
       </div>
-
+      <!-- Service Card 2 -->
       <div class="service-card">
-        <div class="service-icon"><img src="https://img.icons8.com/color/96/project-management.png" alt="Project Management"></div>
+        <div class="service-icon"><img src="img/project manage1.jpg" alt="Project Management icon"></div>
         <h3>Project Management</h3>
         <div class="service-overlay">
           <ul>
-            <li>Project Planning & Scheduling</li>
+            <li>Infrastructure Project Planning & Scheduling</li>
             <li>Construction Monitoring</li>
-            <li>Contract Administration</li>
+            <li>Contract Administration (GCC/ NEC/ FIDIC)</li>
             <li>Risk & Cost Management</li>
             <li>Commissioning & Handover</li>
           </ul>
         </div>
       </div>
-
+      <!-- Service Card 3 -->
       <div class="service-card">
-        <div class="service-icon"><img src="https://img.icons8.com/color/96/water.png" alt="Water & Wastewater"></div>
+        <div class="service-icon"><img src="img/water.jpg" alt="Water & Wastewater icon"></div>
         <h3>Water &amp; Wastewater</h3>
         <div class="service-overlay">
           <ul>
-            <li>Treatment Plant Support</li>
+            <li>Operational Support for Treatment Plants</li>
             <li>Water Quality Monitoring</li>
-            <li>Asset Management</li>
-            <li>Operator Training</li>
-            <li>Compliance Management</li>
+            <li>Asset Management & Maintenance Planning</li>
+            <li>Operator Training and Capacity Building</li>
           </ul>
         </div>
       </div>
-
+      <!-- Service Card 4 -->
       <div class="service-card">
-        <div class="service-icon"><img src="https://img.icons8.com/color/96/oil-industry.png" alt="Industrial Lubrication"></div>
+        <div class="service-icon"><img src="img/lub2.jpg" alt="Industrial Lubrication icon"></div>
         <h3>Industrial Lubrication</h3>
         <div class="service-overlay">
           <ul>
-            <li>Lubrication Programs</li>
+            <li>Grease & Lubrication Management Programs</li>
             <li>Oil Sampling & Analysis</li>
             <li>Tribology Services</li>
-            <li>Reliability Improvement</li>
-            <li>Contamination Control</li>
+            <li>EquipmentReliability Improvement Programs</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact with FormSubmit -->
+  <!-- Contact Section with FormSubmit integration and Google Map -->
   <section id="contact" class="section">
     <h2>Contact Us</h2>
     <div class="contact-container">
@@ -543,14 +166,14 @@
       </div>
 
       <div class="contact-form">
-        <form id="contactForm" action="https://formsubmit.co/hr@ngoola.com" method="POST">
-          <!-- FormSubmit configuration -->
+        <!-- FormSubmit powered contact form -->
+        <form id="contactForm" action="https://formsubmit.co/manomambane05@gmail.com" method="POST">
+          <!-- FormSubmit configuration (hidden fields) -->
           <input type="hidden" name="_captcha" value="true">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_subject" value="New Website Contact Form Message">
           <input type="hidden" name="_autoresponse" value="Thank you for contacting Ngoola (Pty) Ltd. We have received your message and will get back to you within 24 hours.">
           <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-          
           <!-- Honeypot spam protection -->
           <input type="text" name="_honey" style="display:none">
           
@@ -558,88 +181,21 @@
           <input type="email" name="email" placeholder="Your Email" required>
           <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
           <button type="submit">Send Message</button>
-          <div id="formStatus" class="success-message"></div>
+          <div id="formStatus" class="success-message" role="alert"></div>
         </form>
       </div>
 
       <div class="contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.123456789012!2d28.01512345678901!3d-26.04012345678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d1e2f2f2f2f%3A0x1234567890abcdef!2s57%20Sloane%20Street%2C%20Bryanston%2C%20Sandton%2C%202191!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.123456789012!2d28.01512345678901!3d-26.04012345678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d1e2f2f2f2f%3A0x1234567890abcdef!2s57%20Sloane%20Street%2C%20Bryanston%2C%20Sandton%2C%202191!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" allowfullscreen loading="lazy" title="Ngoola Office Location Map"></iframe>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Ngoola (Pty) Ltd. All rights reserved. | Designed by <a href="https://antswisasolutions.netlify.app/" target="_blank">Antswisa Solutions</a></p>
+    <p>&copy; 2026 Ngoola (Pty) Ltd. All rights reserved. | Designed by <a href="https://antswisasolutions.netlify.app/" target="_blank" rel="noopener noreferrer">Antswisa Solutions</a></p>
   </footer>
 
-  <script>
-    // Hamburger Menu
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('nav ul');
-    
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('showing');
-    });
-
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('showing');
-      });
-    });
-
-    // Form submission with FormSubmit
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-    
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(contactForm);
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.textContent;
-      
-      // Disable button and show loading state
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-      
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          formStatus.style.display = 'block';
-          formStatus.textContent = '✓ Thank you! Your message has been sent successfully. We will get back to you soon.';
-          formStatus.style.background = '#d4edda';
-          formStatus.style.color = '#155724';
-          contactForm.reset();
-          
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            formStatus.style.display = 'none';
-          }, 5000);
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        formStatus.style.display = 'block';
-        formStatus.textContent = '✗ Sorry, there was an error sending your message. Please try again or email us directly at admin@ngoola.com';
-        formStatus.style.background = '#f8d7da';
-        formStatus.style.color = '#721c24';
-        
-        setTimeout(() => {
-          formStatus.style.display = 'none';
-        }, 5000);
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
-    });
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
